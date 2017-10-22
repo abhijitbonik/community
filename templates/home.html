@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item active"><a href="{% url 'home' %}">Home</a></li>
+  <li class="breadcrumb-item active"><a href="{% url 'newArticle' %}">New Article</a></li>
+{% endblock %}
+
+{% block content %}
+  <table class="table">
+    <thead class="thead-inverse">
+      <tr>
+        <th>Title</th>
+        <th>Body</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for article in articles %}
+        <tr>
+          <td>
+            <a href="#">{{ article.title }}</a>
+          </td>
+          <td class="align-middle"><small class="text-muted d-block">{{ article.body }}</small></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
