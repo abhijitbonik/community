@@ -9,6 +9,8 @@
   <li class="breadcrumb-item"><a href="{% url 'newArticle' %}">Create Article</a></li>
   
 {% endblock %}
+
+{% block content %}
 {% block javascript %}
   <script src="{% static 'js/ckeditor/ckeditor.js' %}"></script>
   <script type="text/javascript">
@@ -16,8 +18,8 @@
   </script>
 {% endblock %}
 
-{% block content %}
-  
+
+{% if user.is_authenticated %}
 <form method="post">
   {% csrf_token %}
   <div class="form-group">
@@ -39,4 +41,5 @@
   </div>
   <button type="submit" class="btn btn-primary">Create</button>
 </form>
+{% endif %}
 {% endblock %}
