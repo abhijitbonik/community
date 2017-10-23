@@ -25,5 +25,6 @@ urlpatterns = [
     url(r'^signup/$', accounts_views.signup, name ='signup'),
     url(r'^login/$', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     url(r'^logout/$', auth_views.LogoutView.as_view(), name='logout'),
+    url(r'^articleview/(?P<pk>\d+)/$', views.article_view, name='article_view'),
     url(r'^new_article/$',views.newArticle, name ='newArticle'),
 ]

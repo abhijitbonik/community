@@ -17,7 +17,7 @@
       {% for article in articles %}
         <tr>
           <td>
-            <a href="#">{{ article.title }}</a>
+            <a href="{% url 'article_view' article.pk %}">{{ article.title }}</a>
           </td>
           <td class="align-middle"><small class="text-muted d-block">{{ article.body }}</small></td>
         </tr>

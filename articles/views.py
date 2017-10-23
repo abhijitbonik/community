@@ -22,3 +22,9 @@ def newArticle(request):
 
 	return render(request, 'new_article.html')
 
+def article_view(request, pk):
+    try:
+        article = Articles.objects.get(pk=pk)
+    except Articles.DoesNotExist:
+        raise Http404
+    return render(request, 'articleview.html', {'article': article})
