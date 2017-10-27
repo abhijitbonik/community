@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect
 from .forms import NewArticleForm
 from django.http import Http404, HttpResponse
 from .models import Articles
-
 # Create your views here.
+from rest_framework import viewsets
+from .serializers import ArticleSerializer
 
 def home(request):
 	articles=Articles.objects.all()
@@ -28,3 +29,10 @@ def article_view(request, pk):
     except Articles.DoesNotExist:
         raise Http404
     return render(request, 'articleview.html', {'article': article})
+
+
+class ArticleViewSet(viewsets.ModelViewSet):
+	queryset = Articles.objects.all().order_by('title')
+	serializer_class = ArticleSerializer
+
+
